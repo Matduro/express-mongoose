@@ -1,8 +1,5 @@
-const express = require("express");
-const app = express();
-const path = require("path");
+// This file is isolated from the index file (ie running on it's own for the purpose of feeding new data)
 const mongoose = require("mongoose");
-
 const Product = require("./models/product");
 
 mongoose
@@ -18,13 +15,7 @@ mongoose
     console.log(error);
   });
 
-app.set("views", path.join(__dirname, "views"));
-app.set("view engine", "ejs");
-
-app.get("/dog", (req, res) => {
-  res.send("WOOF!");
-});
-
-app.listen(3000, () => {
-  console.log("APP IS LISTENING ON PORT 3000!");
+const p = new Product({
+  name: "Ruby Grapefruit",
+  price: 1.99,
 });
